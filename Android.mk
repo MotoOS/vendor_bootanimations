@@ -16,9 +16,9 @@ else ifeq ($(IS_MOTO),burton)
 else
     ifeq ($(IS_MOTOROLA),)
         $(warning "Moto bootanimations: IS_MOTO is undefined, assuming 1080p")
-    else
+else
         $(warning "Moto bootanimations: Current bootanimation res is not supported, forcing 1080p (support 1080,720,1440")
-    endif
+endif
     PRODUCT_COPY_FILES += $(LOCAL_PATH)/bootanimation/bootanimation_1080.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 endif
 else ifneq ($(MOTOROLA_DEVICE),false)
