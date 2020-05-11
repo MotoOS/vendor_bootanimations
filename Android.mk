@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 LOCAL_PATH := vendor/bootanimations
 
 
-
+ifneq ($(MOTOROLA_DEVICE),true)
 ifeq ($(IS_MOTO),1080)
      PRODUCT_COPY_FILES += $(LOCAL_PATH)/bootanimation/bootanimation_1080.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 else ifeq ($(IS_MOTO),1440)
@@ -21,3 +21,8 @@ else ifeq ($(IS_MOTO),burton)
     endif
     PRODUCT_COPY_FILES += $(LOCAL_PATH)/bootanimation/bootanimation_1080.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 endif
+else ifneq ($(MOTOROLA_DEVICE),false)
+           $(warning "DexOS rom active: load boot animation for dexOS 1080p")
+           PRODUCT_COPY_FILES += $(LOCAL_PATH)/bootanimation/deluxe.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
+endif
+     
